@@ -1,0 +1,18 @@
+#ifndef STATEDEFINATION
+#define STATEDEFINATION
+
+#define DOOR_OPENED 1
+#define DOOR_CLOSED 0
+
+#define TRAY_FULL 1
+#define TRAY_EMPTY 0
+
+#define LED_OFF HIGH
+#define LED_ON LOW
+
+#define COVER_OPEN HIGH
+#define COVER_CLOSE LOW
+
+#define FOOD_LOW HIGH
+
+#endif /* STATEDEFINATION */

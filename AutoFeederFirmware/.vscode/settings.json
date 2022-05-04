@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+      "sntp.h": "c",
+      "algorithm": "cpp",
+      "system_error": "cpp",
+      "*.tcc": "cpp",
+      "map": "cpp",
+      "cmath": "cpp"
+    }
+}
