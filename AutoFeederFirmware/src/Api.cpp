@@ -49,9 +49,9 @@ ApiHttpResponse Api::_get(String path)
   
   http.begin(client, baseURL + path);
   int httpResponseCode = http.GET();
-  http.end();
   ApiHttpResponse response(httpResponseCode, http.getString());
   Serial.print(response.getBody());
+  http.end();
   return response;
 }
 
@@ -60,8 +60,8 @@ ApiHttpResponse Api::_post(String path, String payload)
   http.begin(client, baseURL + path);
   http.addHeader("Content-Type", "application/json");
   int httpResponseCode = http.POST(payload);
-  http.end();
   ApiHttpResponse response(httpResponseCode, http.getString());
   Serial.print(response.getBody());
+  http.end();
   return response;
 }

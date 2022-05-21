@@ -4,7 +4,7 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <AsyncTCP.h>
-
+#include "Config.h"
 #include "ApiHttpResponse.hpp"
 
 typedef enum {
