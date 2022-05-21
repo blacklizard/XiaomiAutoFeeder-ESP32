@@ -38,6 +38,7 @@ div
 
 <script>
 import BaseLayout from '@/Layouts/BaseLayout';
+import { Dropdown } from 'bootstrap';
 
 export default {
   layout: BaseLayout,
@@ -52,6 +53,12 @@ export default {
     return {
 
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+      [...dropdownElementList].map((dropdownToggleEl) => new Dropdown(dropdownToggleEl));
+    });
   },
   methods: {
     dispense(group) {

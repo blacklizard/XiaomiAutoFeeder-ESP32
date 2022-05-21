@@ -52,6 +52,7 @@ import forEach from 'lodash/forEach';
 import indexOf from 'lodash/indexOf';
 import dayjs from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import { Dropdown } from 'bootstrap';
 import BaseLayout from '@/Layouts/BaseLayout';
 
 dayjs.extend(isSameOrAfter);
@@ -76,6 +77,11 @@ export default {
       _devices.push(device);
     });
     this.current_devices = _devices;
+
+    this.$nextTick(() => {
+      const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+      [...dropdownElementList].map((dropdownToggleEl) => new Dropdown(dropdownToggleEl));
+    });
   },
   methods: {
     isBeforeNow(datetime) {
