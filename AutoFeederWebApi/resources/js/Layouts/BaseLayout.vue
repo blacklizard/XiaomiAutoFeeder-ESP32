@@ -21,6 +21,10 @@ div
                   Link.nav-link(href="/groups")
                     font-awesome-icon(icon="layer-group", size="sm")
                     span.nav-link-title.ms-2 Groups
+                li.nav-item(:class="route().current('announcements') ? 'active' : ''")
+                  Link.nav-link(href="/announcements")
+                    font-awesome-icon(icon="bullhorn", size="sm")
+                    span.nav-link-title.ms-2 Announcements
       .page-wrapper
         slot
 </template>

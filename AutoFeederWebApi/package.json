@@ -22,7 +22,7 @@
         "@vue/compiler-sfc": "^3.2.31",
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
-        "dayjs": "^1.11.1",
+        "dayjs": "^1.11.2",
         "eslint": "^8.14.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-plugin-import": "^2.26.0",

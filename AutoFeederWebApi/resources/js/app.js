@@ -17,6 +17,7 @@ import {
   faEllipsisVertical,
   faLayerGroup,
   faPen,
+  faBullhorn,
 } from '@fortawesome/free-solid-svg-icons';
 
 /* import font awesome icon component */
@@ -35,6 +36,7 @@ library.add([
   faEllipsisVertical,
   faLayerGroup,
   faPen,
+  faBullhorn,
 ]);
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';

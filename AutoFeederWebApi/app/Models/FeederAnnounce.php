@@ -35,4 +35,9 @@ class FeederAnnounce extends Model
     protected $casts = [
         'status' => AnnounceStatus::class,
     ];
+
+    public function feeder()
+    {
+        return $this->hasOne(Feeder::class, 'id', 'feeder_id');
+    }
 }

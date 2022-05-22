@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\AnnounceController;
 use App\Http\Controllers\Web\FeederController;
 use App\Http\Controllers\Web\GroupController;
 use Illuminate\Foundation\Application;
@@ -43,3 +44,6 @@ Route::post('/groups/{group}/{schedule}/toggle', [GroupController::class, 'toggl
 Route::post('/groups/{group}/{schedule}/remove', [GroupController::class, 'removeSchedule'])->name('groups.schedule.remove');
 Route::post('/groups/{group}/{schedule}/update', [GroupController::class, 'updateSchedule'])->name('groups.schedule.update');
 Route::post('/groups/{group}/dispense/feeder', [GroupController::class, 'dispenseFeeder'])->name('groups.dispense.feeder');
+
+
+Route::get('/announcements', AnnounceController::class)->name('announcements');
