@@ -254,7 +254,7 @@ class FeederService
             ->feeder
             ->whereIn('id', $feederIds)
             ->where('group_id', $group->id)
-            ->update(['group_id' => $group->id]);
+            ->update(['group_id' => null]);
     }
 
     /**
