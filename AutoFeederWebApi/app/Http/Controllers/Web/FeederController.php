@@ -10,6 +10,7 @@ use App\Models\GroupSchedule;
 use App\Services\FeederService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -138,6 +139,7 @@ class FeederController extends Controller
      */
     public function dispenseFeeder(Feeder $feeder): RedirectResponse
     {
+        Log::info($feeder);
         $this->feederService->dispense([$feeder]);
         return redirect()->route('feeders.index');
     }

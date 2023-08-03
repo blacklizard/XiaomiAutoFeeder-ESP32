@@ -19,5 +19,6 @@ Route::prefix('v1')->group(
     function () {
         Route::post('/announce', [FeederController::class, 'announce']);
         Route::get('/schedule/{mac}', [FeederController::class, 'schedule']);
+        Route::post('/feed/{feeder}', [FeederController::class, 'feed']);
     }
 );

@@ -50,4 +50,8 @@ class FeederController extends Controller
     {
         return $this->feederService->getSchedule($mac);
     }
+
+    public function feed(Feeder $feeder) {
+      $this->feederService->dispense([$feeder]);
+    }
 }
