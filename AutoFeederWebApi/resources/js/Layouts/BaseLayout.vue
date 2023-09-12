@@ -25,6 +25,10 @@ div
                   Link.nav-link(href="/announcements")
                     font-awesome-icon(icon="bullhorn", size="sm")
                     span.nav-link-title.ms-2 Announcements
+                li.nav-item(:class="route().current('statistics') ? 'active' : ''")
+                  Link.nav-link(href="/statistics")
+                    font-awesome-icon(icon="bullhorn", size="sm")
+                    span.nav-link-title.ms-2 Statistics
       .page-wrapper
         slot
 </template>
@@ -52,6 +56,10 @@ export default {
     bottom: 0;
     left: 0;
     z-index: 1030;
+  }
+
+  .page-wrapper {
+    margin-bottom: 68px;
   }
 }
 

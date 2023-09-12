@@ -29,6 +29,9 @@ div
                     a.dropdown-item(href='#' @click.prevent="replaceDrier(device.id)")
                       font-awesome-icon(icon="rotate", size="sm")
                       span.ms-2 Reset drier
+                    a.dropdown-item(href='#' @click.prevent="removeDevice(device.id)")
+                      font-awesome-icon(icon="rotate", size="sm")
+                      span.ms-2 Remove device
             .card-body
               .d-flex.flex-column
                 template(v-if="isBeforeNow(device.drier_replaced_at)")
@@ -68,24 +71,29 @@ export default {
   data() {
     return {
       current_devices: [],
+      mounted: false,
     };
   },
   mounted() {
-    const _devices = [];
-    forEach(this.devices, (device) => {
-      device.edit = false;
-      _devices.push(device);
-    });
-    this.current_devices = _devices;
-
-    this.$nextTick(() => {
-      const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-      [...dropdownElementList].map((dropdownToggleEl) => new Dropdown(dropdownToggleEl));
-    });
+    this.reloadDevices();
   },
   methods: {
+    reloadDevices() {
+      const _devices = [];
+      forEach(this.devices, (device) => {
+        device.edit = false;
+        _devices.push(device);
+      });
+      this.current_devices = _devices;
+
+      this.$nextTick(() => {
+        const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+        [...dropdownElementList].map((dropdownToggleEl) => new Dropdown(dropdownToggleEl));
+        this.mounted = true;
+      });
+    },
     isBeforeNow(datetime) {
-      return dayjs().isSameOrAfter(dayjs(datetime).add(30, 'days'));
+      return dayjs().isSameOrAfter(dayjs(datetime).add(30, 'days'), 'millisecond');
     },
     saveName(deviceId) {
       const device = find(this.current_devices, ['id', deviceId]);
@@ -111,18 +119,28 @@ export default {
     dispense(feeder) {
       this.$inertia.post(this.route('feeders.dispense.feeder', {
         feeder,
-      }), {});
+      }), {preserveState: false});
     },
     identify(feeder) {
       this.$inertia.post(this.route('feeders.identify', {
         feeder,
-      }), {});
+      }), {preserveState: false});
     },
     replaceDrier(feeder) {
       if (confirm('Are you sure you want to reset drier status?')) {
         this.$inertia.post(this.route('feeders.replace_drier', {
           feeder,
-        }), {});
+        }), {
+          preserveState: false,
+        });
+        window.location.reload();
+      }
+    },
+    removeDevice(feeder) {
+      if (confirm('Are you sure you want to remove this device?')) {
+        this.$inertia.delete(this.route('feeders.destroy', {
+          feeder,
+        }), {preserveState: false});
       }
     },
   },

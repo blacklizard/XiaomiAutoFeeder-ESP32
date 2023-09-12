@@ -46,6 +46,12 @@ class FeederService
         return $feeder;
     }
 
+    public function removeDevice(Feeder $feeder) {
+        $feeder->schedules()->delete();
+        $feeder->announcements()->delete();
+        $feeder->delete();
+    }
+
     /**
      * Get all devices
      *
@@ -215,7 +221,7 @@ class FeederService
      */
     public function replaceDrier(Feeder $feeder): void
     {
-        $feeder->drier_replaced_at = Carbon::now();
+        $feeder->drier_replaced_at = Carbon::now()->subSeconds(10);
         $feeder->save();
     }
 

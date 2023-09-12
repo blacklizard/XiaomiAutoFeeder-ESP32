@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\AnnounceController;
 use App\Http\Controllers\Web\FeederController;
 use App\Http\Controllers\Web\GroupController;
+use App\Http\Controllers\Web\StatisticController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,7 +22,7 @@ Route::get('/', function () {
     return redirect()->route('feeders.index');
 });
 
-Route::resource('feeders', FeederController::class)->only('index');
+Route::resource('feeders', FeederController::class)->only(['index', 'destroy']);
 Route::post('/feeders/{feeder}/name', [FeederController::class, 'name'])->name('feeders.name');
 Route::post('/feeders/{feeder}/identify', [FeederController::class, 'identify'])->name('feeders.identify');
 Route::post('/feeders/{feeder}/replace_drier', [FeederController::class, 'replaceDrier'])->name('feeders.replace_drier');
@@ -47,3 +48,4 @@ Route::post('/groups/{group}/dispense/feeder', [GroupController::class, 'dispens
 
 
 Route::get('/announcements', AnnounceController::class)->name('announcements');
+Route::get('/statistics', StatisticController::class)->name('statistics');

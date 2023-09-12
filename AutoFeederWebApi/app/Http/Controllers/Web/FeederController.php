@@ -40,6 +40,14 @@ class FeederController extends Controller
     }
 
     /**
+     * Remove a device
+     */
+    public function destroy(Feeder $feeder) {
+      $this->feederService->removeDevice($feeder);
+      return redirect()->route('feeders.index', [], 303);
+    }
+
+    /**
      * Get schedule for given feeder
      *
      * @param Feeder $feeder
@@ -180,6 +188,6 @@ class FeederController extends Controller
     public function replaceDrier(Request $request, Feeder $feeder)
     {
         $this->feederService->replaceDrier($feeder);
-        return redirect()->route('feeders.index');
+        return redirect()->route('feeders.index', [], 303);
     }
 }
